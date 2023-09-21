@@ -6,7 +6,7 @@ class CheckboxBottomSheet extends StatefulWidget {
 }
 
 class _CheckboxBottomSheetState extends State<CheckboxBottomSheet> {
-  bool isChecked = false;
+  bool _value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +19,38 @@ class _CheckboxBottomSheetState extends State<CheckboxBottomSheet> {
       ),
       padding: EdgeInsets.all(16.0),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+       
         children: [
-          Checkbox(
-            
-            value: isChecked,
-            shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(10.0), // Adjust the radius as needed
-            ),
-            activeColor: Color(0xff3c2f35),
-            onChanged: (value) {
-              setState(() {
-                isChecked = value ?? false;
-              });
-            },
-          ),
+          Center(
+              child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      _value = !_value;
+                    });
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: _value ? Color(0xff3c2f35) : Colors.transparent,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.white, // Border color
+                        width: 2.0, // Border width
+                      ),
+                    ),
+                    child: _value
+                        ? Icon(
+                            Icons.check,
+                            size: 30.0,
+                            color: Colors.white,
+                          )
+                        : Icon(
+                            Icons.check_box_outline_blank,
+                            size: 30.0,
+                            color: Colors.transparent,
+                          ),
+                  ))),
           SizedBox(height: 10.0),
           Text(
             'Option 1',
