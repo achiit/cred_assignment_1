@@ -9,25 +9,20 @@ class CustomIconButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Color.fromARGB(255, 32, 40, 47), // #171d22 color
-      borderRadius: BorderRadius.circular(25.0), // Adjust the radius as needed
-      child: InkWell(
-        onTap: () {
-          // Handle button tap
-          print('Button tapped');
-        },
-        borderRadius: BorderRadius.circular(
-            30.0), // Match the outer container's border radius
-        child: Container(
-          width: 50.0,
-          height: 50.0,
-          padding: EdgeInsets.all(16.0), // Adjust padding as needed
-          child: Icon(
-            icon,
-            weight: 2,
-            size: 20,
-            color: Colors.white, // White color for the close icon
+    return ClipOval(
+      child: Material(
+        color: Color.fromARGB(255, 49, 54, 59), // Button color
+        child: InkWell(
+          splashColor: Color(0xff1a2025), // Splash color
+          onTap: () {},
+          child: SizedBox(
+            width: 40,
+            height: 40,
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 20,
+            ),
           ),
         ),
       ),
